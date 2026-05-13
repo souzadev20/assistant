@@ -1,0 +1,225 @@
+:root {
+    --bg-color: #050505;
+    --glass-bg: rgba(20, 20, 25, 0.7);
+    --accent-color: #00f2ff;
+    --text-main: #e0e0e0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --neon-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    overflow: auto;
+    min-height: 100vh;
+}
+
+/* Fundo com efeito Glow */
+.glow-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 242, 255, 0.15) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: blur(80px);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, var(--accent-color));
+    -webkit-background-clip: text;
+     background-clip: text;         /* Versão padrão */
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    opacity: 0.5;
+    font-size: 0.9rem;
+}
+
+/* Grid Principal */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+}
+
+/* Painel Glassmorphism */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+
+.glass-panel:hover {
+    border-color: var(--accent-color);
+    box-shadow: var(--neon-shadow);
+}
+
+/* Area de Exibição */
+.display-area {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.output-content {
+    flex-grow: 1;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.placeholder-text {
+    opacity: 0.3;
+    font-style: italic;
+}
+
+/* Widgets */
+.widgets {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.weather-widget h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background: #111;
+    border: 1px solid var(--border-color);
+    color: white;
+    border-radius: 10px;
+    outline: none;
+}
+
+
+.temp {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.topic-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
+.topic-btn i { font-size: 1.2rem; }
+.topic-btn span { font-size: 0.7rem; }
+
+.topic-btn:hover {
+    background: rgba(0, 242, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Input Footer */
+.input-wrapper {
+    display: flex;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem !important;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+#send-btn {
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#send-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .main-grid { grid-template-columns: 1fr; }
+}
